@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Site Info -->
+  <title>Nasiff Bello — Software & Data Engineer</title>
+  <meta name="description"
+    content="Detail-oriented Software & Data Engineer with expertise in designing and implementing data pipelines and analytics solutions, proficient in Python and cloud technologies." />
+  <meta name="author" content="Nasiff Bello" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Nasiff Bello — Software & Data Engineer" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nazzcodek.github.io" />
+  <meta property="og:image" content="https://nazzcodek.github.io/portfolio_media/profile.jpg" />
+
+  <!-- Google Fonts: Syne + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-card: #16161a;
+      --bg-card-hover: #1a1a1f;
+      --text-primary: #fffffe;
+      --text-secondary: #94a1b2;
+      --text-muted: #72757e;
+      --accent: #ff6b35;
+      --accent-secondary: #f7cb46;
+      --accent-tertiary: #7f5af0;
+      --border-color: #242629;
+      --gradient-start: #ff6b35;
+      --gradient-end: #f7cb46;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+      transition: all 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      opacity: 0.08;
+      filter: blur(100px);
+      top: -200px;
+      right: -200px;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .hero-bg-shape-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-tertiary) 0%, transparent 70%);
+      opacity: 0.1;
+      filter: blur(80px);
+      bottom: -100px;
+      left: -100px;
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 10vw, 6rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--gradient-end));
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--text-primary);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+      max-width: 300px;
+    }
+
+    /* Experience Section */
+    .experience-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .experience-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      transition: all 0.4s ease;
+    }
+
+    .experience-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      transform: translateX(8px);
+    }
+
+    .experience-date {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .experience-company {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+    }
+
+    .experience-role {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-summary {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .experience-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .experience-highlights li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    .experience-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-image {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--bg-card) 0%, transparent 50%);
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-title a:hover {
+      color: var(--accent);
+    }
+
+    .project-link-icon {
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-link-icon {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    .project-summary {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.375rem 0.75rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      border-color: var(--accent);
+    }
+
+    .skill-category-title {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skill-category-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--accent);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Education & Certifications */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .education-card {
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .education-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-tertiary));
+    }
+
+    .education-institution {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-degree {
+      color: var(--accent);
+      font-size: 0.9375rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-location {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .education-date {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Certifications */
+    .certifications-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cert-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .cert-badge:hover {
+      border-color: var(--accent-secondary);
+      transform: translateY(-2px);
+    }
+
+    .cert-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--accent-secondary);
+    }
+
+    .cert-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cert-name {
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .cert-issuer {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-tertiary) 0%, transparent 70%);
+      opacity: 0.05;
+      filter: blur(100px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contact-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-description {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer-text span {
+      color: var(--accent);
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .mobile-menu-btn span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .experience-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+        z-index: 101;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: var(--bg-card);
+        padding: 6rem 2rem 2rem;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+        }
+
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .experience-card {
+        padding: 1.5rem;
+      }
+
+      .skills-container,
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-width: 100%;
+      }
+    }
+
+    /* Selection styling */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">NB.</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape-2"></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span>Open to Software & Data Engineering roles</span>
+        </div>
+
+        <h1 class="hero-title">Nasiff Bello</h1>
+        <p class="hero-subtitle">Software & Data Engineer</p>
+        <p class="hero-description">
+          Detail-oriented Software & Data Engineer with expertise in designing and implementing data pipelines
+          and analytics solutions. Proficient in Python and cloud technologies, with a strong background
+          in backend development and data management. Targeting roles leveraging ML/Data Science knowledge
+          and expertise in optimizing system performance for large-scale AI and data systems.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Get in Touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">5+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Cloud Platforms</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">15+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="experience-grid">
+      <article class="experience-card reveal">
+        <div class="experience-meta">
+          <p class="experience-date">Jan 2023 — Oct 2025</p>
+          <p class="experience-company">Amazing Properties LLC, USA</p>
+        </div>
+        <div class="experience-details">
+          <h3 class="experience-role">Tech Lead</h3>
+          <p class="experience-summary">
+            Managed backend development and data engineering initiatives while leading a team of developers to meet
+            project milestones and deliver high-quality outcomes.
+          </p>
+          <ul class="experience-highlights">
+            <li>Managed backend development and databases using Python and cloud platforms, improving system efficiency
+              and reliability</li>
+            <li>Deployed backend applications on GCP, enhancing application scalability and performance</li>
+            <li>Led a team of developers to meet project milestones, ensuring timely delivery and high-quality outcomes
+            </li>
+            <li>Oversaw data engineering tasks, designing and maintaining ETL pipelines using Prefect and Kafka</li>
+            <li>Developed and optimized data models using Pandas and Scikit-learn, enhancing data accuracy</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card reveal">
+        <div class="experience-meta">
+          <p class="experience-date">2022</p>
+          <p class="experience-company">Cecure Intelligence, Lagos</p>
+        </div>
+        <div class="experience-details">
+          <h3 class="experience-role">Data Engineer Intern</h3>
+          <p class="experience-summary">
+            Designed and implemented real-time data pipelines and AWS-based architectures for scalable data processing
+            solutions.
+          </p>
+          <ul class="experience-highlights">
+            <li>Designed and implemented a real-time data pipeline to process semi-structured data by integrating user
+              records</li>
+            <li>Designed the data pipeline architecture for a new product using AWS services</li>
+            <li>Documented REST APIs using Swagger API Documentation, ensuring clear and comprehensive guidelines</li>
+            <li>Designed CloudFormation templates for deploying AWS resources for data collection web apps</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card reveal">
+        <div class="experience-meta">
+          <p class="experience-date">Previous Role</p>
+          <p class="experience-company">Country Kitchen, Ibadan</p>
+        </div>
+        <div class="experience-details">
+          <h3 class="experience-role">Data Analyst/Engineer</h3>
+          <p class="experience-summary">
+            Designed data pipeline architecture and created business intelligence solutions to enhance decision-making
+            across multiple outlets.
+          </p>
+          <ul class="experience-highlights">
+            <li>Designed data pipeline architecture for a new product using Kubernetes and AWS</li>
+            <li>Created PowerBI reports to track KPIs across business outlets, enhancing decision-making</li>
+            <li>Supported implementation and active monitoring of controls and programs for precision and efficacy</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card reveal">
+        <div class="project-image"
+          style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"
+            opacity="0.5">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <div class="project-image-overlay"></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">
+            <a href="https://hub.livebolden.com" target="_blank" rel="noopener">
+              Care App
+              <svg class="project-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </h3>
+          <p class="project-summary">
+            Developing an application that enables tailored care for patients, using AI/ML to provide recommendations
+            and detect safety risks.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">AI/ML</span>
+            <span class="tech-tag">Healthcare</span>
+            <span class="tech-tag">Safety Detection</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-image"
+          style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)"
+            stroke-width="1.5" opacity="0.5">
+            <path
+              d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+          <div class="project-image-overlay"></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">
+            <a href="https://teeketa.com" target="_blank" rel="noopener">
+              Teeketa WhatsApp Ticketing Bot
+              <svg class="project-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </h3>
+          <p class="project-summary">
+            Designed and built a WhatsApp bot for ticketing for Teeketa.com and app.teeketa.com, enabling seamless event
+            ticket purchases via chat.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">WhatsApp API</span>
+            <span class="tech-tag">Bot Development</span>
+            <span class="tech-tag">Ticketing</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-image"
+          style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-tertiary)" stroke-width="1.5"
+            opacity="0.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="M21 15l-5-5L5 21" />
+          </svg>
+          <div class="project-image-overlay"></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">
+            <span>
+              Image Categorization using AWS Rekognition
+            </span>
+          </h3>
+          <p class="project-summary">
+            Implemented a solution using AWS Rekognition to detect faces in images and facilitate user-driven image
+            categorization.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">AWS Rekognition</span>
+            <span class="tech-tag">Lambda</span>
+            <span class="tech-tag">S3</span>
+            <span class="tech-tag">Face Detection</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-image"
+          style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"
+            opacity="0.5">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+          </svg>
+          <div class="project-image-overlay"></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">
+            <span>
+              Station Management System
+            </span>
+          </h3>
+          <p class="project-summary">
+            ALX capstone project - Designed and implemented data pipelines to process and manage station operations data
+            efficiently.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Data Pipelines</span>
+            <span class="tech-tag">ETL</span>
+            <span class="tech-tag">SQL</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-image"
+          style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%); display: flex; align-items: center; justify-content: center;">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-secondary)"
+            stroke-width="1.5" opacity="0.5">
+            <path d="M3 3v18h18" />
+            <path d="M18 17V9" />
+            <path d="M13 17V5" />
+            <path d="M8 17v-3" />
+          </svg>
+          <div class="project-image-overlay"></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">
+            <span>
+              Procurement Data Analysis
+            </span>
+          </h3>
+          <p class="project-summary">
+            Data analysis project focused on optimizing procurement processes and identifying cost-saving opportunities
+            through analytics.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">PowerBI</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="skills-container">
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">
+          <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          Programming (Python Expertise)
+        </h3>
+        <div class="skill-list">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">Kafka</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">
+          <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+          </svg>
+          Cloud Platforms
+        </h3>
+        <div class="skill-list">
+          <span class="skill-tag">AWS Lambda</span>
+          <span class="skill-tag">AWS S3</span>
+          <span class="skill-tag">CloudFormation</span>
+          <span class="skill-tag">Microsoft Azure</span>
+          <span class="skill-tag">GCP</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">
+          <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3" />
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+          </svg>
+          Databases
+        </h3>
+        <div class="skill-list">
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Aurora</span>
+          <span class="skill-tag">Redshift</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">BigQuery</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">DynamoDB</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3 class="skill-category-title">
+          <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Data Ingestion & Tools
+        </h3>
+        <div class="skill-list">
+          <span class="skill-tag">Prefect</span>
+          <span class="skill-tag">Airflow</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Swagger</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">PowerBI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="section-header reveal">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="education-grid">
+      <article class="education-card reveal">
+        <h3 class="education-institution">ALX</h3>
+        <p class="education-degree">Software Engineering Programme</p>
+        <p class="education-location">Specialized in Back-End Development</p>
+        <p class="education-date">05/2024</p>
+      </article>
+
+      <article class="education-card reveal">
+        <h3 class="education-institution">Ahmadu Bello University, Zaria</h3>
+        <p class="education-degree">B.Eng., Agriculture Engineering</p>
+        <p class="education-location">Zaria, Nigeria</p>
+        <p class="education-date">03/2015</p>
+      </article>
+    </div>
+
+    <div class="certifications-list reveal">
+      <div class="cert-badge">
+        <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="7" />
+          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+        </svg>
+        <div class="cert-info">
+          <span class="cert-name">Google Data Analytics</span>
+          <span class="cert-issuer">Coursera</span>
+        </div>
+      </div>
+
+      <div class="cert-badge">
+        <svg class="cert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="7" />
+          <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+        </svg>
+        <div class="cert-info">
+          <span class="cert-name">Proficiency in Management</span>
+          <span class="cert-issuer">Nigeria Institute of Management (Chartered)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coding Platforms & Problem Solving -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--text-primary);" class="reveal">Coding Platforms
+        & Algorithms</h3>
+      <div class="skills-container" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="skill-category reveal" style="border-left: 3px solid var(--accent);">
+          <h3 class="skill-category-title">
+            <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            Problem Solving
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+            Proven ability in fast problem-solving and strong knowledge of data structures and algorithms.
+          </p>
+        </div>
+
+        <div class="skill-category reveal" style="border-left: 3px solid var(--accent-secondary);">
+          <h3 class="skill-category-title">
+            <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            Competitive Platforms
+          </h3>
+          <div class="skill-list">
+            <span class="skill-tag">LeetCode</span>
+            <span class="skill-tag">HackerRank</span>
+            <span class="skill-tag">Kaggle</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal" style="border-left: 3px solid var(--accent-tertiary);">
+          <h3 class="skill-category-title">
+            <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+            System Design
+          </h3>
+          <p style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+            Understanding of system design and performance optimization for scalable applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-content reveal">
+      <h2 class="contact-title">Let's Build Something Great</h2>
+      <p class="contact-description">
+        Based in Lagos, Nigeria. I'm always interested in hearing about new opportunities,
+        challenging projects, and innovative ideas in software and data engineering.
+        Whether you have a question or just want to say hi, feel free to reach out!
+      </p>
+      <div class="contact-links">
+        <a href="mailto:bellnas09@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          bellnas09@gmail.com
+        </a>
+        <a href="tel:+2348051074517" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          +234 805 107 4517
+        </a>
+        <a href="https://github.com/Nazzcodek" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/nasiffbello" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-text">
+      Designed & Built by <span>Nasiff Bello</span> © 2025
+    </p>
+  </footer>
+
+  <script>
+    // Navigation scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Reveal animations on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (elementTop < windowHeight - revealPoint) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Stagger animation for multiple reveals
+    const staggerReveal = () => {
+      const activeReveals = document.querySelectorAll('.reveal.active');
+      activeReveals.forEach((element, index) => {
+        element.style.transitionDelay = `${index * 0.1}s`;
+      });
+    };
+
+    window.addEventListener('scroll', staggerReveal);
+
+    // Mobile Menu Functionality
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+
+    if (mobileBtn && navLinks) {
+      mobileBtn.addEventListener('click', () => {
+        mobileBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        // Prevent scrolling when menu is open
+        if (navLinks.classList.contains('active')) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileBtn.classList.remove('active');
+          navLinks.classList.remove('active');
+          body.style.overflow = '';
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') &&
+          !navLinks.contains(e.target) &&
+          !mobileBtn.contains(e.target)) {
+          mobileBtn.classList.remove('active');
+          navLinks.classList.remove('active');
+          body.style.overflow = '';
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
